@@ -5,6 +5,8 @@ import { IoIosAdd } from "react-icons/io";
 import wishlist from "../assets/wishlist.png";
 import cart from "../assets/cart.png";
 import eye from "../assets/eye.png";
+import remove from "../assets/remove.png";
+import { BiPlus } from "react-icons/bi";
 
 const ProductCard = ({ product }) => {
   const { title, thumbnail, price, discountPercentage, brand, description } =
@@ -22,7 +24,7 @@ const ProductCard = ({ product }) => {
 
   return (
     <div
-      className="relative w-full h-auto p-2 overflow-hidden transition-all duration-300 runded-lg b g-white hover:shadow-md sm:w-auto md:w-auto"
+      className="relative w-full h-auto p-2 overflow-hidden transition-all duration-300 rounded-md runded-lg b g-white hover:shadow-md sm:w-auto md:w-auto"
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
@@ -49,33 +51,33 @@ const ProductCard = ({ product }) => {
         <img
           src={thumbnail}
           alt={title}
-          className="object-cover w-full h-40 sm:h-48"
+          className="object-cover w-full h-60 sm:h-56"
         />
 
         {/* Overlay with Dynamic Add to Cart Button */}
         {isHovered && (
           <div className="absolute inset-0 flex flex-col items-center justify-end gap-2 p-2 transition-opacity duration-300 bg-black bg-opacity-50">
             {count > 0 ? (
-              <div className="flex items-center justify-between w-5/6 px-2 py-1 font-semibold text-white bg-green-500 rounded-md md:px-3">
+              <div className="flex items-center justify-around w-5/6 px-2 py-1.5 font-semibold text-white bg-green-500 rounded-md md:px-3">
                 <button onClick={handleReset} className="flex items-center">
-                  <FiTrash2 className="mr-1 md:mr-2" />
+                  <FiTrash2 className="mr-1 text-lg text-white md:mr-2" />
                 </button>
                 <span className="text-xs md:text-sm">
                   {count} Added in Cart
                 </span>
                 <button onClick={handleIncrease} className="flex items-center">
-                  <IoIosAdd className="ml-1 md:ml-2" />
+                  <BiPlus className="w-6 h-4 ml-1 text-white md:ml-2" />
                 </button>
               </div>
             ) : (
               <button
                 onClick={handleIncrease}
-                className="flex items-center justify-center w-5/6 px-2 py-1 mb-2 font-semibold text-white transition bg-[#b1afaf] rounded-md md:px-3   border border-white bg-opacity-80"
+                className="flex items-center justify-center w-5/6 px-2 py-1  font-semibold text-white transition bg-[#b1afaf] rounded-md md:px-3   border border-white bg-opacity-80"
               >
                 <img
                   src={cart}
                   alt={title}
-                  className="w-4 h-4 mr-1 md:w-8 md:h-8 md:mr-2"
+                  className="w-5 h-5 mr-1 md:w-5 md:h-5 md:mr-2"
                 />
 
                 <span className="text-xs md:text-sm">Add to Cart</span>
@@ -86,7 +88,7 @@ const ProductCard = ({ product }) => {
               <img
                 src={eye}
                 alt={title}
-                className="w-4 h-4 mr-1 md:w-8 md:h-8 md:mr-2"
+                className="w-5 h-5 mr-1 md:w-5 md:h-5 md:mr-2"
               />
               <span className="text-xs text-white md:text-sm">Quick View</span>
             </button>
