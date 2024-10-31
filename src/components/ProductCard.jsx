@@ -6,19 +6,27 @@ import eye from "../assets/eye.png";
 import ribbon from "../assets/ribbon.png";
 import { BiPlus } from "react-icons/bi";
 import { FaHeart, FaRegHeart } from "react-icons/fa";
+import { useCartContext } from "../context/CartProvider";
 
 const ProductCard = ({ product }) => {
-  const { title, thumbnail, price, discountPercentage,  description } = product;
+  const { title, thumbnail, price, discountPercentage, description } = product;
   const [count, setCount] = useState(0);
   const [isHovered, setIsHovered] = useState(false);
   const [wish, setWish] = useState(false);
 
-  const handleIncrease = () => {
+  const handleIncrease = (product1) => {
+    console.log('product1', product1)
     setCount(count + 1);
+    if (product1) addToCart(product);
   };
+  const { addToCart,removeFromCart } = useCartContext(); // Get addToCart from CartContext
 
-  const handleReset = () => {
+  // const handleAddToCart = () => {
+  //   addToCart(product); // Add product to cart
+  // };
+  const handleReset = (product) => {
     setCount(0);
+    if (product) removeFromCart(product?.id);
   };
 
   return (
@@ -67,14 +75,14 @@ const ProductCard = ({ product }) => {
             <div className="absolute inset-0 flex flex-col items-center justify-end gap-2 p-2 transition-opacity duration-300 bg-black bg-opacity-50">
               {count > 0 ? (
                 <div className="flex items-center justify-around w-full px-2 py-1.5 font-semibold text-white bg-green-500 rounded-md md:px-3">
-                  <button onClick={handleReset} className="flex items-center">
+                  <button onClick={()=>handleReset(product)} className="flex items-center">
                     <FiTrash2 className="mr-1 text-lg text-white md:mr-2" />
                   </button>
                   <span className="text-xs md:text-sm">
                     {count} Added in Cart
                   </span>
                   <button
-                    onClick={handleIncrease}
+                     onClick={() => handleIncrease(product)}
                     className="flex items-center"
                   >
                     <BiPlus className="w-6 h-4 ml-1 text-white md:ml-2" />
@@ -82,7 +90,7 @@ const ProductCard = ({ product }) => {
                 </div>
               ) : (
                 <button
-                  onClick={handleIncrease}
+                  onClick={() => handleIncrease(product)}
                   className="flex items-center justify-center w-full px-2 py-1  font-semibold text-white transition bg-[#b1afaf] rounded-md md:px-3   border border-white bg-opacity-80"
                 >
                   <img
@@ -129,6 +137,7 @@ const ProductCard = ({ product }) => {
 ProductCard.propTypes = {
   product: PropTypes.shape({
     title: PropTypes.string.isRequired,
+    id: PropTypes.string.isRequired,
     thumbnail: PropTypes.string.isRequired,
     price: PropTypes.number.isRequired,
     discountPercentage: PropTypes.number,

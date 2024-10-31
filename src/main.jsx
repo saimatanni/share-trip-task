@@ -1,19 +1,22 @@
 // main.jsx
 
-import React from 'react';
-import { StrictMode } from 'react';
-import { createRoot } from 'react-dom/client';
-import './index.css';
-import App from './App';
-import { ProductProvider } from './context/ProductContext';
+import React from "react";
+import { StrictMode } from "react";
+import { createRoot } from "react-dom/client";
+import "./index.css";
+import App from "./App";
+import { ProductProvider } from "./context/ProductContext";
+import { CartProvider } from "./context/CartProvider";
 
-const rootElement = document.getElementById('root');
+const rootElement = document.getElementById("root");
 
 if (rootElement) {
   createRoot(rootElement).render(
     <StrictMode>
       <ProductProvider>
-        <App />
+        <CartProvider>
+          <App />
+        </CartProvider>
       </ProductProvider>
     </StrictMode>
   );
