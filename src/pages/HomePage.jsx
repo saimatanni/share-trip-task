@@ -18,13 +18,7 @@ const ProductList = () => {
       {/* Load More Button */}
       {hasMore && (
         <div className="flex justify-center my-4 col-span-full">
-          {/* <button
-            onClick={handleLoadMore}
-            disabled={loading}
-            className="px-4 py-2 text-white bg-blue-500 rounded-md hover:bg-blue-600 disabled:bg-gray-400"
-          >
-            {loading ? "Loading..." : "Load More"}
-          </button> */}
+
           {loading ? (
             <Loader />
           ) : (
@@ -33,7 +27,7 @@ const ProductList = () => {
               disabled={loading}
               className="px-4 py-2 text-white bg-blue-500 rounded-md hover:bg-blue-600 disabled:bg-gray-400"
             >
-              {loading ? "Loading..." : "Load More"}
+              Load More
             </button>
           )}
         </div>

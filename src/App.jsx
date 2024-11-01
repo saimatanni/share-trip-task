@@ -5,13 +5,11 @@ import ProductList from './pages/HomePage'
 import './App.css'
 function App() {
 
-
   return (
     <div>
       <Header />
       <main className="pt-16">
-        <ProductList/>
-        {/* Other components go here */}
+        <ProductList />
       </main>
     </div>
   )
