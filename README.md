@@ -1,8 +1,42 @@
-# React + Vite
+# Share Trip Task
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This project is a React application for the Share Trip task, built using Vite for fast development and Tailwind CSS for styling. The project also includes ESLint for linting and Axios for making HTTP requests.
 
-Currently, two official plugins are available:
+## Project Setup
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+### Prerequisites
+
+Make sure you have the following installed:
+
+- [Node.js](https://nodejs.org/) (version 18 or above)
+- [npm](https://www.npmjs.com/) (Node Package Manager)
+
+
+
+### Installation
+
+1. Clone the repository:
+
+   ```bash
+   git clone https://github.com/saimatanni/share-trip-task.git
+
+2. Navigate into the project directory:
+
+   ```bash
+   cd share-trip-task
+
+3. Install dependencies:
+
+   ```bash
+   npm install
+
+3. To start the development server, use:
+
+   ```bash
+   npm run dev
+
+
+---
+Design and Developed with :heart: by **Shaima Alam Tanni**.
+
+ 
