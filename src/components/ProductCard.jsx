@@ -45,7 +45,7 @@ const ProductCard = ({ product }) => {
       )}
       <div className="h-auto p-2 ">
         {isHovered && (
-          <div className="absolute z-50 text-gray-400 cursor-pointer right-5 hover:text-red-500 top-5 ">
+          <div className="absolute z-10 text-gray-400 cursor-pointer right-5 hover:text-red-500 top-5 ">
             {wish ? (
               <FaHeart
                 onClick={() => setWish(!wish)}
