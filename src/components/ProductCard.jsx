@@ -40,7 +40,7 @@ const ProductCard = ({ product }) => {
           className="absolute z-10 left-[-4px] top-5 bg-no-repeat w-full h-10  inline-block"
           style={{ backgroundImage: `url(${ribbon})` }}
         >
-          <p className="ml-2 text-xs text-left text-white mt-[4px] font-[525] ">
+          <p className="ml-2.5 text-xs text-left text-white mt-[4px] font-[525] ">
             {" "}
             - ৳ {discountedValue}
             {/* - ৳ <span className="text-xs">{discountPercentage} </span> */}
