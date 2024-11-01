@@ -19,11 +19,8 @@ const ProductCard = ({ product }) => {
     setCount(count + 1);
     if (product1) addToCart(product);
   };
-  const { addToCart,removeFromCart } = useCartContext(); // Get addToCart from CartContext
+  const { addToCart,removeFromCart } = useCartContext(); 
 
-  // const handleAddToCart = () => {
-  //   addToCart(product); // Add product to cart
-  // };
   const handleReset = (product) => {
     setCount(0);
     if (product) removeFromCart(product?.id);
