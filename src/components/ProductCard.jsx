@@ -67,6 +67,7 @@ const ProductCard = ({ product }) => {
             src={thumbnail}
             alt={title}
             className="object-contain w-full h-60 sm:h-56"
+            loading="lazy"
           />
           {isHovered && (
             <div className="absolute inset-0 flex flex-col items-center justify-end gap-2 p-2 transition-opacity duration-300 bg-black bg-opacity-50">
