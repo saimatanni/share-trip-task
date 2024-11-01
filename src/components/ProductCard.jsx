@@ -19,13 +19,16 @@ const ProductCard = ({ product }) => {
     setCount(count + 1);
     if (product1) addToCart(product);
   };
-  const { addToCart,removeFromCart } = useCartContext(); 
+  const { addToCart, removeFromCart } = useCartContext();
 
   const handleReset = (product) => {
     setCount(0);
     if (product) removeFromCart(product?.id);
   };
 
+  const discountedValue = discountPercentage
+    ? Math.round((price * discountPercentage) / 100)
+    : 0;
   return (
     <div
       className="relative w-auto transition-all duration-300 bg-white rounded-lg hover:shadow-lg"
@@ -37,9 +40,11 @@ const ProductCard = ({ product }) => {
           className="absolute z-10 left-[-4px] top-5 bg-no-repeat w-full h-10  inline-block"
           style={{ backgroundImage: `url(${ribbon})` }}
         >
-          <p className="ml-1 text-xs text-left text-white mt-[4px]">
+          <p className="ml-2 text-xs text-left text-white mt-[4px] font-[525] ">
             {" "}
-            - ৳ <span className="text-xs">{discountPercentage} </span>
+            - ৳ {discountedValue}
+            {/* - ৳ <span className="text-xs">{discountPercentage} </span> */}
+
           </p>
         </div>
       )}
@@ -49,9 +54,8 @@ const ProductCard = ({ product }) => {
             {wish ? (
               <FaHeart
                 onClick={() => setWish(!wish)}
-                className={`text-lg md:w-6 md:h-6 ${
-                  wish ? "text-red-500" : "text-white"
-                }`}
+                className={`text-lg md:w-6 md:h-6 ${wish ? "text-red-500" : "text-white"
+                  }`}
               />
             ) : (
               <FaRegHeart
@@ -73,14 +77,14 @@ const ProductCard = ({ product }) => {
             <div className="absolute inset-0 flex flex-col items-center justify-end gap-2 p-2 transition-opacity duration-300 bg-black bg-opacity-50">
               {count > 0 ? (
                 <div className="flex items-center justify-around w-full px-2 py-1.5 font-semibold text-white bg-green-500 rounded-md md:px-3">
-                  <button onClick={()=>handleReset(product)} className="flex items-center">
+                  <button onClick={() => handleReset(product)} className="flex items-center">
                     <FiTrash2 className="mr-1 text-lg text-white md:mr-2" />
                   </button>
                   <span className="text-xs md:text-sm">
                     {count} Added in Cart
                   </span>
                   <button
-                     onClick={() => handleIncrease(product)}
+                    onClick={() => handleIncrease(product)}
                     className="flex items-center"
                   >
                     <BiPlus className="w-6 h-4 ml-1 text-white md:ml-2" />
@@ -122,7 +126,7 @@ const ProductCard = ({ product }) => {
           <div className="flex items-center mt-1 space-x-2 sm:mt-2">
             <span className="font-[475] text-[#1882FF] text-xl">৳ {price}</span>
             <span className=" text-[#77818C] line-through ">
-              ৳ {Math.round(price + (price * discountPercentage) / 100)}
+              ৳ {Math.round(price + discountedValue)}
             </span>
           </div>
         </div>
